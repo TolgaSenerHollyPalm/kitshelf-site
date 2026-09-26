@@ -13,3 +13,10 @@ Jekyll off, so the files are served untouched.
 DNS is in Cloudflare, every record *DNS only*: four `A` and four `AAAA` records on `@` pointing at GitHub Pages,
 and a `CNAME` from `www` to `<user>.github.io`, which GitHub redirects to the apex. Mail to
 `merhaba@kitshelf.app` is forwarded by Cloudflare Email Routing.
+
+## Link preview
+
+`docs/og.png` is the 1200×630 image that WhatsApp, iMessage and social sites show for a shared link. Its source is
+`og/og.html`, the page's shelf drawing on a full-width shelf; after changing it, or when a kit goes from *Yakında*
+to *Yayında*, run `og/render.sh` (headless Chrome, with the fonts embedded in `docs/index.html`) and commit the new
+PNG. Link previews are cached, so a changed image can take a while to show up in chats.
