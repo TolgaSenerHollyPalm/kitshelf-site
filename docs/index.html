@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>KitShelf — Her iş için bir kit</title>
-<meta name="description" content="KitShelf, seyahatinden boş zamanına kadar hayatını kolaylaştıran küçük, ücretsiz uygulamaların evi. İnternetsiz çalışır, verilerin cihazında kalır.">
+<meta name="description" content="KitShelf, seyahatinden okuduğun kitaplara, birikiminden boş zamanına kadar hayatını kolaylaştıran küçük, ücretsiz uygulamaların evi. İnternetsiz çalışır, verilerin cihazında kalır.">
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#F6F3EC">
 <link rel="canonical" href="https://kitshelf.app/">
@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="KitShelf">
 <meta property="og:locale" content="tr_TR">
 <meta property="og:title" content="KitShelf — Her iş için bir kit. Hepsi aynı rafta.">
-<meta property="og:description" content="Seyahatinden boş zamanına kadar hayatını kolaylaştıran küçük, ücretsiz uygulamalar. Hesap yok, mağaza yok; tarayıcıdan aç.">
+<meta property="og:description" content="Seyahatinden okuduğun kitaplara, birikiminden boş zamanına kadar hayatını kolaylaştıran küçük, ücretsiz uygulamalar. Hesap yok, mağaza yok; tarayıcıdan aç.">
 <meta property="og:image" content="https://kitshelf.app/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -68,8 +68,8 @@ svg{display:block;flex-shrink:0}
 .lead{max-width:560px;font-size:clamp(18px,1.5vw,21px);line-height:1.55;color:var(--muted)}
 .ctas{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:60px;padding:0 28px;border-radius:999px;text-decoration:none;font-size:18px;font-weight:600}
-.btn-primary{background:var(--teal);color:#fff!important}
-.btn-primary:hover{background:var(--teal-dark)}
+.btn-primary{background:var(--kit,var(--teal));color:#fff!important}
+.btn-primary:hover{background:var(--kit-dark,var(--teal-dark))}
 .btn-ghost{border:1.5px solid var(--ink);color:var(--ink)!important}
 .btn-ghost:hover{background:var(--ink);color:var(--paper)!important}
 .facts{display:flex;flex-wrap:wrap;gap:12px 24px;font-size:15px;color:var(--muted)}
@@ -89,19 +89,22 @@ svg{display:block;flex-shrink:0}
 .card-top .name{min-width:0}
 /* Kart daraldığında (tablet, dar masaüstü) isim alta iner, etiket taşmaz. */
 @media (min-width:720px){@container (max-width:330px){.card-top{flex-wrap:wrap;row-gap:14px}.card-top .name{order:3;flex-basis:100%}}}
+/* Phones: "FreeTimeKit" beside its tag needs about 302px of card. */
+@media (max-width:719px){@container (max-width:310px){.card-top{flex-wrap:wrap;row-gap:14px}.card-top .name{order:3;flex-basis:100%}}}
 .card-top{display:flex;align-items:center;gap:16px}
 .card-top h3{font-family:var(--display);font-size:30px;font-weight:700;letter-spacing:-0.02em;line-height:1.15}
 .card-top small{display:block;font-size:15px;color:var(--muted)}
 .tag{margin-left:auto;padding:6px 12px;border-radius:999px;font-size:13px;font-weight:700;white-space:nowrap}
 .tag-live{background:var(--teal-soft);color:var(--teal-dark)}
 .tag-soon{background:var(--amber-soft);color:var(--amber-dark)}
-.tile{width:64px;height:64px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.kit-book{--kit:#9B3D63;--kit-dark:#7E2F50}
 .slogan{font-family:var(--display);font-size:24px;line-height:1.2;font-weight:700;letter-spacing:-0.015em}
 .checks{display:flex;flex-direction:column;gap:14px;font-size:17px;line-height:1.45}
 .checks li{display:flex;gap:12px;align-items:flex-start}
 .card .btn{margin-top:auto;height:56px;font-size:17px}
 .soon{margin-top:auto;display:flex;align-items:center;justify-content:center;height:56px;border-radius:999px;border:1.5px dashed var(--dash);color:var(--muted);font-size:17px;font-weight:600}
 .slot{border:2px dashed var(--dash);border-radius:28px;padding:36px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center}
+.kits .slot{grid-column:span 2}
 .slot h3{font-family:var(--display);font-size:28px;font-weight:700;letter-spacing:-0.02em}
 .slot p{max-width:280px;color:var(--muted);line-height:1.55}
 .slot a{font-weight:600}
@@ -156,8 +159,6 @@ svg{display:block;flex-shrink:0}
   .card-top{gap:14px}
   .card-top h3{font-size:26px}
   .card-top small{font-size:14px}
-  .tile{width:56px;height:56px;border-radius:13px}
-  .tile svg{width:30px;height:30px}
   .card-top > svg{width:56px;height:56px}
   .slogan{font-size:21px}
   .checks{font-size:16px;gap:12px}
@@ -189,7 +190,7 @@ svg{display:block;flex-shrink:0}
   <div class="hero-copy">
     <span class="eyebrow">Küçük, ücretsiz, işe yarar</span>
     <h1>Her iş için bir kit.<br><em>Hepsi aynı rafta.</em></h1>
-    <p class="lead">KitShelf, seyahatinden boş zamanına kadar hayatını kolaylaştıran küçük, ücretsiz uygulamaların evi. Hesap açmadan, mağazaya girmeden tarayıcıdan aç; istersen ana ekrana uygulama olarak ekle.</p>
+    <p class="lead">KitShelf, seyahatinden okuduğun kitaplara, birikiminden boş zamanına kadar hayatını kolaylaştıran küçük, ücretsiz uygulamaların evi. Hesap açmadan, mağazaya girmeden tarayıcıdan aç; istersen ana ekrana uygulama olarak ekle.</p>
     <div class="ctas">
       <a class="btn btn-primary" href="https://trip.kitshelf.app">TripKit'i dene<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <a class="btn btn-ghost" href="#kits">Raftaki kitler</a>
@@ -205,24 +206,31 @@ svg{display:block;flex-shrink:0}
   <svg class="shelf shelf-lg" viewBox="0 0 612 540" aria-hidden="true" font-family="'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif">
     <defs>
       <filter id="shT" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="16" stdDeviation="11" flood-color="#075F59" flood-opacity="0.35"/></filter>
+      <filter id="shB" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="16" stdDeviation="11" flood-color="#7E2F50" flood-opacity="0.35"/></filter>
       <filter id="shA" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="16" stdDeviation="11" flood-color="#78500A" flood-opacity="0.3"/></filter>
     </defs>
     <rect width="612" height="540" rx="32" fill="#EDE5D5"/>
-    <g filter="url(#shT)"><rect x="60" y="150" width="190" height="250" rx="22" fill="#0A7D76"/></g>
-    <rect x="78" y="168" width="76" height="26" rx="13" fill="#FF6B57"/>
-    <text x="116" y="186" text-anchor="middle" font-size="13" font-weight="700" fill="#3D1008" font-family="Figtree, ui-sans-serif, system-ui, sans-serif">Yayında</text>
-    <svg x="105" y="210" width="100" height="94" viewBox="100 90 312 290"><path d="M212 154v-28a26 26 0 0 1 26-26h36a26 26 0 0 1 26 26v28" fill="none" stroke="#CFF8F2" stroke-width="22" stroke-linecap="round"/><rect x="112" y="154" width="288" height="216" rx="40" fill="#FF6B57"/><rect x="112" y="236" width="288" height="44" fill="#075F59"/><circle cx="256" cy="258" r="14" fill="#CFF8F2"/></svg>
-    <text x="80" y="354" font-size="26" font-weight="700" fill="#FFFFFF" letter-spacing="-0.5">TripKit</text>
-    <text x="80" y="378" font-size="14" fill="#E6FFFB" font-family="Figtree, ui-sans-serif, system-ui, sans-serif">trip.kitshelf.app</text>
-    <g filter="url(#shA)"><rect x="270" y="200" width="168" height="200" rx="22" fill="#F0B23F"/></g>
-    <rect x="286" y="216" width="74" height="26" rx="13" fill="#1B1F1E"/>
-    <text x="323" y="234" text-anchor="middle" font-size="13" font-weight="700" fill="#F6F3EC" font-family="Figtree, ui-sans-serif, system-ui, sans-serif">Yakında</text>
-    <svg x="328" y="260" width="52" height="52" viewBox="0 0 24 24"><path d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-7l-5 4v-4H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" fill="none" stroke="#3A2A06" stroke-width="1.6" stroke-linejoin="round"/><path d="M9.6 8.6a2.5 2.5 0 1 1 3.4 2.3c-.6.3-1 .8-1 1.5v.3" fill="none" stroke="#3A2A06" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="15" r="1" fill="#3A2A06"/></svg>
-    <text x="288" y="382" font-size="20" font-weight="700" fill="#3A2A06" letter-spacing="-0.4">FreeTimeKit</text>
-    <rect x="459" y="251" width="108" height="148" rx="20" fill="none" stroke="#B3A48A" stroke-width="2" stroke-dasharray="7 6"/>
-    <path d="M513 296v22M502 307h22" stroke="#6E6350" stroke-width="2.2" stroke-linecap="round"/>
-    <text x="513" y="345" text-anchor="middle" font-size="14" font-weight="600" fill="#6E6350" font-family="Figtree, ui-sans-serif, system-ui, sans-serif">Sıradaki</text>
-    <text x="513" y="363" text-anchor="middle" font-size="14" font-weight="600" fill="#6E6350" font-family="Figtree, ui-sans-serif, system-ui, sans-serif">kit</text>
+    <g filter="url(#shT)"><rect x="46" y="150" width="140" height="250" rx="22" fill="#0A7D76"/></g>
+    <rect x="62" y="168" width="76" height="26" rx="13" fill="#FF6B57"/>
+    <text x="100" y="186" text-anchor="middle" font-size="13" font-weight="700" fill="#3D1008" font-family="Figtree, ui-sans-serif, system-ui, sans-serif">Yayında</text>
+    <svg x="66" y="210" width="100" height="94" viewBox="100 90 312 290"><path d="M212 154v-28a26 26 0 0 1 26-26h36a26 26 0 0 1 26 26v28" fill="none" stroke="#CFF8F2" stroke-width="22" stroke-linecap="round"/><rect x="112" y="154" width="288" height="216" rx="40" fill="#FF6B57"/><rect x="112" y="236" width="288" height="44" fill="#075F59"/><circle cx="256" cy="258" r="14" fill="#CFF8F2"/></svg>
+    <text x="64" y="354" font-size="26" font-weight="700" fill="#FFFFFF" letter-spacing="-0.5">TripKit</text>
+    <text x="64" y="378" font-size="14" fill="#E6FFFB" font-family="Figtree, ui-sans-serif, system-ui, sans-serif">trip.kitshelf.app</text>
+    <g filter="url(#shB)"><rect x="200" y="172" width="140" height="228" rx="22" fill="#9B3D63"/></g>
+    <rect x="216" y="190" width="76" height="26" rx="13" fill="#FF6B57"/>
+    <text x="254" y="208" text-anchor="middle" font-size="13" font-weight="700" fill="#3D1008" font-family="Figtree, ui-sans-serif, system-ui, sans-serif">Yayında</text>
+    <svg x="233" y="230" width="74" height="90" viewBox="124 96 262 320"><rect x="150" y="104" width="228" height="304" rx="30" fill="#F4D3BD"/><rect x="134" y="104" width="228" height="304" rx="30" fill="#FFF4E6"/><rect x="134" y="104" width="46" height="304" rx="23" fill="#F4D3BD"/><path d="M290 104h44v172l-22-20-22 20z" fill="#FF6B57"/></svg>
+    <text x="218" y="354" font-size="26" font-weight="700" fill="#FFFFFF" letter-spacing="-0.5">BookKit</text>
+    <text x="218" y="378" font-size="14" fill="#F6E6EC" font-family="Figtree, ui-sans-serif, system-ui, sans-serif">book.kitshelf.app</text>
+    <g filter="url(#shA)"><rect x="354" y="200" width="128" height="200" rx="22" fill="#F0B23F"/></g>
+    <rect x="370" y="216" width="74" height="26" rx="13" fill="#1B1F1E"/>
+    <text x="407" y="234" text-anchor="middle" font-size="13" font-weight="700" fill="#F6F3EC" font-family="Figtree, ui-sans-serif, system-ui, sans-serif">Yakında</text>
+    <svg x="392" y="260" width="52" height="52" viewBox="108 118 318 300"><path d="M152 118h168a44 44 0 0 1 44 44v84a44 44 0 0 1-44 44h-96l-56 44v-44h-16a44 44 0 0 1-44-44v-84a44 44 0 0 1 44-44z" fill="#1B1F1E"/><path d="M234 214h150a42 42 0 0 1 42 42v78a42 42 0 0 1-42 42h-10v42l-52-42h-88a42 42 0 0 1-42-42v-78a42 42 0 0 1 42-42z" fill="#FFF8EA"/><circle cx="262" cy="295" r="16" fill="#1B1F1E"/><circle cx="309" cy="295" r="16" fill="#1B1F1E"/><circle cx="356" cy="295" r="16" fill="#1B1F1E"/></svg>
+    <text x="370" y="382" font-size="17" font-weight="700" fill="#3A2A06" letter-spacing="-0.4">FreeTimeKit</text>
+    <rect x="496" y="251" width="70" height="148" rx="20" fill="none" stroke="#B3A48A" stroke-width="2" stroke-dasharray="7 6"/>
+    <path d="M531 296v22M520 307h22" stroke="#6E6350" stroke-width="2.2" stroke-linecap="round"/>
+    <text x="531" y="345" text-anchor="middle" font-size="13" font-weight="600" fill="#6E6350" font-family="Figtree, ui-sans-serif, system-ui, sans-serif">Sıradaki</text>
+    <text x="531" y="362" text-anchor="middle" font-size="13" font-weight="600" fill="#6E6350" font-family="Figtree, ui-sans-serif, system-ui, sans-serif">kit</text>
     <rect x="36" y="400" width="540" height="30" rx="6" fill="#A7844F"/>
     <rect x="36" y="400" width="540" height="20" rx="6" fill="#C9A676"/>
     <rect x="100" y="426" width="14" height="48" rx="4" fill="#A7844F"/>
@@ -230,18 +238,23 @@ svg{display:block;flex-shrink:0}
   </svg>
   <svg class="shelf shelf-sm" viewBox="0 0 350 290" aria-hidden="true" font-family="'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif">
     <rect width="350" height="290" rx="24" fill="#EDE5D5"/>
-    <rect x="24" y="58" width="124" height="162" rx="16" fill="#0A7D76"/>
-    <rect x="36" y="70" width="62" height="20" rx="10" fill="#FF6B57"/>
-    <text x="67" y="84" text-anchor="middle" font-size="11" font-weight="700" fill="#3D1008" font-family="Figtree, ui-sans-serif, system-ui, sans-serif">Yayında</text>
-    <svg x="56" y="100" width="60" height="56" viewBox="100 90 312 290"><path d="M212 154v-28a26 26 0 0 1 26-26h36a26 26 0 0 1 26 26v28" fill="none" stroke="#CFF8F2" stroke-width="22" stroke-linecap="round"/><rect x="112" y="154" width="288" height="216" rx="40" fill="#FF6B57"/><rect x="112" y="236" width="288" height="44" fill="#075F59"/><circle cx="256" cy="258" r="14" fill="#CFF8F2"/></svg>
-    <text x="37" y="205" font-size="19" font-weight="700" fill="#FFFFFF" letter-spacing="-0.4">TripKit</text>
-    <rect x="160" y="90" width="110" height="130" rx="16" fill="#F0B23F"/>
-    <rect x="170" y="100" width="60" height="20" rx="10" fill="#1B1F1E"/>
-    <text x="200" y="114" text-anchor="middle" font-size="11" font-weight="700" fill="#F6F3EC" font-family="Figtree, ui-sans-serif, system-ui, sans-serif">Yakında</text>
-    <svg x="197" y="132" width="36" height="36" viewBox="0 0 24 24"><path d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-7l-5 4v-4H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" fill="none" stroke="#3A2A06" stroke-width="1.7" stroke-linejoin="round"/><path d="M9.6 8.6a2.5 2.5 0 1 1 3.4 2.3c-.6.3-1 .8-1 1.5v.3" fill="none" stroke="#3A2A06" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="15" r="1" fill="#3A2A06"/></svg>
-    <text x="171" y="206" font-size="14" font-weight="700" fill="#3A2A06">FreeTimeKit</text>
-    <rect x="280" y="125" width="55" height="94" rx="14" fill="none" stroke="#B3A48A" stroke-width="2" stroke-dasharray="6 5"/>
-    <path d="M307.5 163v18M298.5 172h18" stroke="#6E6350" stroke-width="2" stroke-linecap="round"/>
+    <rect x="22" y="58" width="82" height="162" rx="16" fill="#0A7D76"/>
+    <rect x="31" y="70" width="62" height="22" rx="11" fill="#FF6B57"/>
+    <text x="62" y="85" text-anchor="middle" font-size="12" font-weight="700" fill="#3D1008" font-family="Figtree, ui-sans-serif, system-ui, sans-serif">Yayında</text>
+    <svg x="35" y="100" width="56" height="52" viewBox="100 90 312 290"><path d="M212 154v-28a26 26 0 0 1 26-26h36a26 26 0 0 1 26 26v28" fill="none" stroke="#CFF8F2" stroke-width="22" stroke-linecap="round"/><rect x="112" y="154" width="288" height="216" rx="40" fill="#FF6B57"/><rect x="112" y="236" width="288" height="44" fill="#075F59"/><circle cx="256" cy="258" r="14" fill="#CFF8F2"/></svg>
+    <text x="32" y="205" font-size="17" font-weight="700" fill="#FFFFFF" letter-spacing="-0.4">TripKit</text>
+    <rect x="112" y="72" width="82" height="148" rx="16" fill="#9B3D63"/>
+    <rect x="121" y="84" width="62" height="22" rx="11" fill="#FF6B57"/>
+    <text x="152" y="99" text-anchor="middle" font-size="12" font-weight="700" fill="#3D1008" font-family="Figtree, ui-sans-serif, system-ui, sans-serif">Yayında</text>
+    <svg x="131.5" y="123" width="43" height="52" viewBox="124 96 262 320"><rect x="150" y="104" width="228" height="304" rx="30" fill="#F4D3BD"/><rect x="134" y="104" width="228" height="304" rx="30" fill="#FFF4E6"/><rect x="134" y="104" width="46" height="304" rx="23" fill="#F4D3BD"/><path d="M290 104h44v172l-22-20-22 20z" fill="#FF6B57"/></svg>
+    <text x="122" y="205" font-size="17" font-weight="700" fill="#FFFFFF" letter-spacing="-0.4">BookKit</text>
+    <rect x="202" y="90" width="82" height="130" rx="16" fill="#F0B23F"/>
+    <rect x="211" y="100" width="62" height="22" rx="11" fill="#1B1F1E"/>
+    <text x="242" y="115" text-anchor="middle" font-size="12" font-weight="700" fill="#F6F3EC" font-family="Figtree, ui-sans-serif, system-ui, sans-serif">Yakında</text>
+    <svg x="225" y="132" width="36" height="36" viewBox="108 118 318 300"><path d="M152 118h168a44 44 0 0 1 44 44v84a44 44 0 0 1-44 44h-96l-56 44v-44h-16a44 44 0 0 1-44-44v-84a44 44 0 0 1 44-44z" fill="#1B1F1E"/><path d="M234 214h150a42 42 0 0 1 42 42v78a42 42 0 0 1-42 42h-10v42l-52-42h-88a42 42 0 0 1-42-42v-78a42 42 0 0 1 42-42z" fill="#FFF8EA"/><circle cx="262" cy="295" r="16" fill="#1B1F1E"/><circle cx="309" cy="295" r="16" fill="#1B1F1E"/><circle cx="356" cy="295" r="16" fill="#1B1F1E"/></svg>
+    <text x="210" y="206" font-size="12" font-weight="700" fill="#3A2A06" letter-spacing="-0.3">FreeTimeKit</text>
+    <rect x="292" y="125" width="36" height="94" rx="11" fill="none" stroke="#B3A48A" stroke-width="2" stroke-dasharray="6 5"/>
+    <path d="M310 163v18M301 172h18" stroke="#6E6350" stroke-width="2" stroke-linecap="round"/>
     <rect x="14" y="220" width="322" height="20" rx="4" fill="#A7844F"/>
     <rect x="14" y="220" width="322" height="13" rx="4" fill="#C9A676"/>
     <rect x="52" y="236" width="10" height="34" rx="4" fill="#A7844F"/>
@@ -252,7 +265,7 @@ svg{display:block;flex-shrink:0}
 <section id="kits" class="wrap section" aria-labelledby="kits-title">
   <div class="section-head">
     <span class="kicker">Raftaki kitler</span>
-    <h2 id="kits-title" class="h2">Şimdilik bir kit yayında,<br>yenileri yolda.</h2>
+    <h2 id="kits-title" class="h2">İki kit yayında,<br>yenileri yolda.</h2>
   </div>
   <div class="kits">
     <article class="card">
@@ -270,17 +283,47 @@ svg{display:block;flex-shrink:0}
       <a class="btn btn-primary" href="https://trip.kitshelf.app">TripKit'i aç<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </article>
 
+    <article class="card kit-book">
+      <div class="card-top">
+        <svg width="64" height="64" viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="112" fill="#9B3D63"/><rect x="150" y="104" width="228" height="304" rx="30" fill="#F4D3BD"/><rect x="134" y="104" width="228" height="304" rx="30" fill="#FFF4E6"/><rect x="134" y="104" width="46" height="304" rx="23" fill="#F4D3BD"/><path d="M290 104h44v172l-22-20-22 20z" fill="#FF6B57"/></svg>
+        <div class="name"><h3>BookKit</h3><small>book.kitshelf.app</small></div>
+        <span class="tag tag-live">Yayında</span>
+      </div>
+      <p class="slogan">Okuduklarını kaydet, altını çizdiklerini unutma.</p>
+      <ul class="checks">
+        <li><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#F6E6EC"/><path d="M7.5 12.3l3 3 6-6.4" fill="none" stroke="#7E2F50" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Okuyorum, okumak istiyorum ve okudum rafları</li>
+        <li><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#F6E6EC"/><path d="M7.5 12.3l3 3 6-6.4" fill="none" stroke="#7E2F50" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Her kitaba kısa notlar ve alıntılar</li>
+        <li><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#F6E6EC"/><path d="M7.5 12.3l3 3 6-6.4" fill="none" stroke="#7E2F50" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Adıyla ya da ISBN ile ara; internet yoksa elle ekle</li>
+      </ul>
+      <a class="btn btn-primary" href="https://book.kitshelf.app">BookKit'i aç<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </article>
+
     <article class="card">
       <div class="card-top">
-        <div class="tile" style="background:#F0B23F"><svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-7l-5 4v-4H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" fill="none" stroke="#3A2A06" stroke-width="1.7" stroke-linejoin="round"/><path d="M9.6 8.6a2.5 2.5 0 1 1 3.4 2.3c-.6.3-1 .8-1 1.5v.3" fill="none" stroke="#3A2A06" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="15" r="1" fill="#3A2A06"/></svg></div>
-        <div class="name"><h3>FreeTimeKit</h3><small>Bilgi yarışması</small></div>
+        <svg width="64" height="64" viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="112" fill="#3F51A3"/><circle cx="256" cy="264" r="148" fill="#F0B23F"/><circle cx="256" cy="264" r="114" fill="none" stroke="#C98A1A" stroke-width="14"/><path d="M160 244C194 212 236 216 256 274C276 216 318 212 352 244C318 234 284 242 256 306C228 242 194 234 160 244Z" fill="#3F51A3"/></svg>
+        <div class="name"><h3>FreedomKit</h3><small>Birikim</small></div>
+        <span class="tag tag-soon">Yakında</span>
+      </div>
+      <p class="slogan">Paran varsa korkmazsın.</p>
+      <ul class="checks">
+        <li><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#E3E7F6"/><path d="M7.5 12.3l3 3 6-6.4" fill="none" stroke="#2F3D80" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Birikimin kaç ay özgürlük ediyor, gör</li>
+        <li><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#E3E7F6"/><path d="M7.5 12.3l3 3 6-6.4" fill="none" stroke="#2F3D80" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Türk lirası, döviz ve altın, güncel fiyatla</li>
+        <li><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#E3E7F6"/><path d="M7.5 12.3l3 3 6-6.4" fill="none" stroke="#2F3D80" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Kendi aylık giderin ya da <span style="white-space:nowrap">“1 ay = 1 tam altın”</span></span></li>
+      </ul>
+      <span class="soon">Rafa çok yakında geliyor</span>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <svg width="64" height="64" viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="112" fill="#F0B23F"/><path d="M152 118h168a44 44 0 0 1 44 44v84a44 44 0 0 1-44 44h-96l-56 44v-44h-16a44 44 0 0 1-44-44v-84a44 44 0 0 1 44-44z" fill="#1B1F1E"/><path d="M234 214h150a42 42 0 0 1 42 42v78a42 42 0 0 1-42 42h-10v42l-52-42h-88a42 42 0 0 1-42-42v-78a42 42 0 0 1 42-42z" fill="#FFF8EA"/><circle cx="262" cy="295" r="16" fill="#1B1F1E"/><circle cx="309" cy="295" r="16" fill="#1B1F1E"/><circle cx="356" cy="295" r="16" fill="#1B1F1E"/></svg>
+        <div class="name"><h3>FreeTimeKit</h3><small>Sohbet kartları</small></div>
         <span class="tag tag-soon">Yakında</span>
       </div>
       <p class="slogan">Boş zamanın bilgiye dönüşsün.</p>
       <ul class="checks">
-        <li><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#F3EBDB"/><path d="M7.5 12.3l3 3 6-6.4" fill="none" stroke="#5B4A22" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Kısa video yerine günde 10 dakikalık öğretici sorular</li>
-        <li><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#F3EBDB"/><path d="M7.5 12.3l3 3 6-6.4" fill="none" stroke="#5B4A22" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Tek başına ya da arkadaşlarınla <span style="white-space:nowrap">soru-cevap</span></span></li>
-        <li><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#F3EBDB"/><path d="M7.5 12.3l3 3 6-6.4" fill="none" stroke="#5B4A22" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sürekli güncellenen hazır sorular ya da kendi soruların</li>
+        <li><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#F3EBDB"/><path d="M7.5 12.3l3 3 6-6.4" fill="none" stroke="#5B4A22" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Günde 10 dakikalık sohbet kartları: kısa bilgi ve sorular</li>
+        <li><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#F3EBDB"/><path d="M7.5 12.3l3 3 6-6.4" fill="none" stroke="#5B4A22" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Hafta sonu masası: arkadaşlarınla tartışma soruları</li>
+        <li><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#F3EBDB"/><path d="M7.5 12.3l3 3 6-6.4" fill="none" stroke="#5B4A22" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>İlgi alanına göre öneriler; kendi konularını da ekle</li>
       </ul>
       <span class="soon">Rafa çok yakında geliyor</span>
     </article>
@@ -336,6 +379,7 @@ svg{display:block;flex-shrink:0}
       <span>© 2026 KitShelf</span>
       <nav aria-label="Alt menü">
         <a href="https://trip.kitshelf.app">TripKit</a>
+        <a href="https://book.kitshelf.app">BookKit</a>
         <a href="#kits">Kitler</a>
         <a href="#why">Neden KitShelf</a>
       </nav>

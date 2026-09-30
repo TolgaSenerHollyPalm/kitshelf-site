@@ -1,8 +1,9 @@
 # KitShelf
 
-The landing page of https://kitshelf.app: one static `index.html` (fonts embedded, no scripts, no build step)
-that introduces the kits. Each kit lives in its own repository on its own subdomain; TripKit is `quiz-trip`,
-served at https://trip.kitshelf.app.
+The landing page of https://kitshelf.app: one static `index.html` (fonts embedded, no build step; its only script
+is the Cloudflare visit counter) that introduces the kits. Each kit lives in its own repository on its own
+subdomain: TripKit is `quiz-trip`, served at https://trip.kitshelf.app, and BookKit is `bookkit`, served at
+https://book.kitshelf.app.
 
 ## Deployment
 
