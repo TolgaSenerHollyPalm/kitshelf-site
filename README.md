@@ -1,7 +1,8 @@
 # KitShelf
 
-The landing page of https://kitshelf.app: one static `index.html` (fonts embedded, no build step; its only script
-is the Cloudflare visit counter) that introduces the kits. Each kit lives in its own repository on its own
+The landing page of https://kitshelf.app: one static `index.html` (fonts embedded, no build step) that introduces
+the kits. Besides the Cloudflare visit counter it has two short inline scripts for the cards' "Neler yapar?" button;
+without JavaScript every card simply shows its list. Each kit lives in its own repository on its own
 subdomain: TripKit is `quiz-trip`, served at https://trip.kitshelf.app, BookKit is `bookkit`, served at
 https://book.kitshelf.app, and FreedomKit is `freedomkit`, served at https://freedom.kitshelf.app.
 
@@ -17,7 +18,21 @@ and a `CNAME` from `www` to `<user>.github.io`, which GitHub redirects to the ap
 
 ## Link preview
 
-`docs/og.png` is the 1200×630 image that WhatsApp, iMessage and social sites show for a shared link. Its source is
-`og/og.html`, the page's shelf drawing on a full-width shelf; after changing it, or when a kit goes from *Yakında*
-to *Yayında*, run `og/render.sh` (headless Chrome, with the fonts embedded in `docs/index.html`) and commit the new
-PNG. Link previews are cached, so a changed image can take a while to show up in chats.
+`docs/og.png` is the 1200×630 image that WhatsApp, iMessage and social sites show for a shared link. It is made on
+the design canvas ("KitShelf Tanıtım Sayfası" in Claude Design, the OgImage frame) and committed as it is.
+`og:image` asks for `og.png?v=N`: link previews are cached by address, so every new image raises `N` by one.
+
+## Adding a kit
+
+The next kit, FreeTimeKit, goes live with these steps:
+
+1. **Card:** copy a card. The kit's colours get a class `.kit-x { --kit: …; --kit-dark: … }`; the tick circle and the
+   tick take the kit's light and dark tones. A live kit gets the "{Kit}'i aç" link with its `long`/`short` labels and
+   `aria-label`; a kit not yet live keeps the "Yakında rafta" pattern. `aria-controls` and the list's `id` are the
+   kit's own (`checks-x`).
+2. **Shelf:** a kit going live puts its icon on the bookcase before the "Sıradaki kit" place and gets a plate; a
+   coming kit stands in `.case-soon` with its badge. A shelf (`.case-row`) has three places; when it is full, add a
+   new `.case-row`. "Sıradaki kit" always stays at the end of the last shelf, and the case grows by itself.
+3. **Heading:** "Üç kit yayında," turns into the number of live kits.
+4. **Footer:** a link to the kit's address.
+5. **Link preview:** when the shelf changes, take a new `og.png` from the design canvas and raise `?v=` by one.
