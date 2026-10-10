@@ -69,7 +69,7 @@ svg{display:block;flex-shrink:0}
 .lead{max-width:560px;font-size:clamp(18px,1.5vw,21px);line-height:1.55;color:var(--muted)}
 .ctas{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:60px;padding:0 28px;border-radius:999px;text-decoration:none;font-size:18px;font-weight:600;white-space:nowrap}
-.btn-primary{background:var(--kit,var(--teal));color:#fff!important}
+.btn-primary{background:var(--kit,var(--teal));color:var(--kit-ink,#fff)!important}
 .btn-primary:hover{background:var(--kit-dark,var(--teal-dark))}
 .btn-ghost{border:1.5px solid var(--ink);color:var(--ink)!important}
 .btn-ghost:hover{background:var(--ink);color:var(--paper)!important}
@@ -115,9 +115,7 @@ svg{display:block;flex-shrink:0}
 .tag-soon{background:var(--amber-soft);color:var(--amber-dark)}
 .kit-book{--kit:#9B3D63;--kit-dark:#7E2F50}
 .kit-freedom{--kit:#3F51A3;--kit-dark:#2F3D80}
-/* Amber is too light for white text: dark text, and a hover that stays light enough for it. */
-.kit-freetime{--kit:#F0B23F;--kit-dark:#D99A28}
-.kit-freetime .btn-primary{color:#3A2A06!important}
+.kit-freetime{--kit:#F0B23F;--kit-dark:#E3A12C;--kit-ink:#3A2A06}
 .slogan{font-family:var(--display);font-size:22px;line-height:1.2;font-weight:700;letter-spacing:-0.015em}
 .card-actions{display:flex;flex-wrap:wrap;gap:10px}
 .card .btn{height:52px;padding:0 22px;gap:8px;font-size:16px}

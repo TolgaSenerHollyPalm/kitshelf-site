@@ -26,8 +26,8 @@ the design canvas ("KitShelf Tanıtım Sayfası" in Claude Design, the OgImage f
 
 A new kit goes live with these steps (FreeTimeKit was the last, on 2026-10-10):
 
-1. **Card:** copy a card. The kit's colours get a class `.kit-x { --kit: …; --kit-dark: … }` (a light colour such as
-   FreeTimeKit's amber also sets a dark button text, as `.kit-freetime` does); the tick circle and the
+1. **Card:** copy a card. The kit's colours get a class `.kit-x { --kit: …; --kit-dark: … }`; a light colour such as
+   FreeTimeKit's amber also sets `--kit-ink`, the button's text, which is white otherwise. The tick circle and the
    tick take the kit's light and dark tones. A live kit gets the "{Kit}'i aç" link with its `long`/`short` labels and
    `aria-label`; a kit not yet live keeps the "Yakında rafta" pattern. `aria-controls` and the list's `id` are the
    kit's own (`checks-x`).
